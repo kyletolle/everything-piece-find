@@ -1,6 +1,8 @@
 # Everything::Piece::Find
 [![Gem Version](https://badge.fury.io/rb/everything-piece-find.svg)](http://badge.fury.io/rb/everything-piece-find)
 [![Build Status](https://travis-ci.org/kyletolle/everything-piece-find.svg?branch=master)](https://travis-ci.org/kyletolle/everything-piece-find)
+[![Code Climate](https://codeclimate.com/github/kyletolle/everything-piece-find/badges/gpa.svg)](https://codeclimate.com/github/kyletolle/everything-piece-find)
+[![Dependency Status](https://gemnasium.com/kyletolle/everything-piece-find.svg)](https://gemnasium.com/kyletolle/everything-piece-find)
 
 You'll need [everything-core](https://github.com/kyletolle/everything-core)
 before you can use this.
