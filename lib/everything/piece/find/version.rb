@@ -1,7 +1,7 @@
 module Everything
-  module Piece
+  class Piece
     module Find
-      VERSION = "0.1.0"
+      VERSION = "0.0.1"
     end
   end
 end
