@@ -7,7 +7,7 @@ before you can use this.
 
 This adds a `#find` to `Everything::Piece`. This allows you to find a piece
 within your `everything` repo by name, instead of by the full path. This only
-works for the root path.
+works for pieces at the root of your everything repo.
 
 ## Installation
 
