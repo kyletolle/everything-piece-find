@@ -5,8 +5,9 @@
 You'll need [everything-core](https://github.com/kyletolle/everything-core)
 before you can use this.
 
-This adds a #find method to Everything::Piece. This allows you to find a piece
-within your everything repo by name.
+This adds a `#find` to `Everything::Piece`. This allows you to find a piece
+within your `everything` repo by name, instead of by the full path. This only
+works for the root path.
 
 ## Installation
 
