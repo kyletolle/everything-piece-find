@@ -5,12 +5,8 @@ module Everything
   class Piece
     module Find
       def find_by_name(piece_name)
-        piece_path = find_path_for_piece_name(piece_name)
+        piece_path = File.join(Everything.path, piece_name)
         Piece.new(piece_path)
-      end
-
-      def find_path_for_piece_name(piece_name)
-        File.join(Everything.path, piece_name)
       end
     end
   end
