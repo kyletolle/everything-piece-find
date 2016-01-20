@@ -29,6 +29,13 @@ describe Everything::Piece::Find do
     it 'returns a piece' do
       expect(finder.find_by_name('super-duper')).to be_a(Everything::Piece)
     end
+
+    it 'returns the piece with that name' do
+      actual_piece = finder.find_by_name('super-duper')
+
+      actual_piece_basename = File.basename(actual_piece.full_path)
+      expect(actual_piece_basename).to eq(given_piece_name)
+    end
   end
 
   context '#find_path_for_piece_name' do
