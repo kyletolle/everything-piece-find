@@ -22,11 +22,12 @@ describe Everything::Piece::Find do
     end
   end
 
-  context '#find' do
+  context '#find_by_name' do
     include_context 'with stubbed everything path'
 
+    let(:given_piece_name) { 'super-duper' }
     it 'returns a piece' do
-      expect(finder.find('super-duper')).to be_a(Everything::Piece)
+      expect(finder.find_by_name('super-duper')).to be_a(Everything::Piece)
     end
   end
 

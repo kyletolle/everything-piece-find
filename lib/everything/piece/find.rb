@@ -4,7 +4,7 @@ require 'everything/piece/find/version'
 module Everything
   class Piece
     module Find
-      def find(piece_name)
+      def find_by_name(piece_name)
         piece_path = find_path_for_piece_name(piece_name)
         Piece.new(piece_path)
       end
