@@ -1,9 +1,9 @@
 describe Everything::Piece do
-  let(:piece) do
-    described_class.new('anything-at-all')
+  it 'has a class method .find_by_name' do
+    expect(described_class).to respond_to(:find_by_name)
   end
 
-  it 'has a method #find_by_name' do
-    expect(piece).to respond_to(:find_by_name)
+  it 'has a class method .find_by_name_recursive' do
+    expect(described_class).to respond_to(:find_by_name_recursive)
   end
 end

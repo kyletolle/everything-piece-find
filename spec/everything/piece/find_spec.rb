@@ -5,11 +5,11 @@ describe Everything::Piece::Find do
 
   let(:fake_class) do
     class FakeClass
-      include Everything::Piece::Find
+      extend Everything::Piece::Find
     end
   end
   let(:finder) do
-    fake_class.new
+    fake_class
   end
 
   shared_context 'with stubbed everything path' do
@@ -22,7 +22,7 @@ describe Everything::Piece::Find do
     end
   end
 
-  context '#find_by_name' do
+  context '.find_by_name' do
     include_context 'with stubbed everything path'
 
     context 'where the directory does not exist' do
@@ -87,7 +87,7 @@ describe Everything::Piece::Find do
     end
   end
 
-  describe '#find_by_name_recursive' do
+  describe '.find_by_name_recursive' do
     include_context 'with stubbed everything path'
 
     context 'where the directory does not exist' do

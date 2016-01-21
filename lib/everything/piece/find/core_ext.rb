@@ -1,3 +1,3 @@
 Everything::Piece.class_eval do
-  include Everything::Piece::Find
+  extend Everything::Piece::Find
 end
