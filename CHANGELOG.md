@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+- Make #find_by_name and #find_by_name_recursive class methods on
+  Everything::Piece, as was intended, instead of them being instance methods.
+- Update changelog with new usage examples
+
 ## 0.4.0
 
 - Use more descriptive error messages in #find_by_name
