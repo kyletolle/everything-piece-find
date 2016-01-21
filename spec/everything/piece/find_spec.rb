@@ -106,14 +106,18 @@ describe Everything::Piece::Find do
       let(:tmp_sub_dir) do
         Dir.mktmpdir
       end
+      let(:tmp_piece_path) do
+        Tempfile.new('just-a-file-under-sub-dir', tmp_sub_dir).path
+      end
       let(:given_piece_name) do
         File.basename tmp_piece_path
       end
-      let!(:tmp_piece_path) do
-        Tempfile.new('just-a-file-under-sub-dir', tmp_sub_dir).path
-      end
       let(:expected_error_message) do
         %Q{Found file "#{given_piece_name}" at "#{tmp_piece_path}", but was expecting a directory}
+      end
+
+      before do
+        tmp_piece_path
       end
 
       after do
@@ -206,7 +210,7 @@ describe Everything::Piece::Find do
         expect(actual_piece).to be_a(Everything::Piece)
       end
 
-      it 'returns the piece from the first subdirectory' do
+      it 'returns the piece from the first subdirectory found on disk' do
         expect(actual_piece.full_path).to eq(expected_piece_path)
       end
     end
