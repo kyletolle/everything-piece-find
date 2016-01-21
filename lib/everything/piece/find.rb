@@ -7,15 +7,9 @@ module Everything
       def find_by_name(piece_name)
         piece_path = File.join(Everything.path, piece_name)
 
-        if Dir.exist?(piece_path)
-          Piece.new(piece_path)
+        raise_no_piece_error(piece_name) unless Dir.exist?(piece_path)
 
-        else
-          error_message =
-            %Q{No piece "#{piece_name}" found in "#{Everything.path}"}
-
-          raise ArgumentError, error_message
-        end
+        Piece.new(piece_path)
       end
 
       def find_by_name_recursive(piece_name)
@@ -23,7 +17,7 @@ module Everything
         possible_dirs = Dir.glob(glob_path)
         full_piece_path = possible_dirs.first
 
-        raise_no_piece_error(piece_name) unless full_piece_path
+        raise_no_piece_recursive_error(piece_name) unless full_piece_path
         raise_not_directory_error(piece_name, full_piece_path) unless Dir.exist?(full_piece_path)
 
         Piece.new(full_piece_path)
@@ -32,6 +26,13 @@ module Everything
     private
 
       def raise_no_piece_error(piece_name)
+        error_message =
+          %Q{No piece "#{piece_name}" found in "#{Everything.path}"}
+
+        raise ArgumentError, error_message
+      end
+
+      def raise_no_piece_recursive_error(piece_name)
         error_message =
           %Q{No piece "#{piece_name}" found in "#{Everything.path}" or subdirectories}
         raise ArgumentError, error_message
