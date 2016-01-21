@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Add #find_by_name_recursive to search for a piece within subdirectories
+- Raise error in #find_by_name when file is found instead of dir
+
 ## 0.2.0
 
 - Raise error in #find_by_name when piece isn't found
