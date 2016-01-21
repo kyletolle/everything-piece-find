@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+- Use more descriptive error messages in #find_by_name
+- Use more descriptive error messages in #find_by_name_recursive
+
 ## 0.3.0
 
 - Add #find_by_name_recursive to search for a piece within subdirectories
