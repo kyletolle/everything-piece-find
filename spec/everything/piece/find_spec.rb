@@ -37,6 +37,27 @@ describe Everything::Piece::Find do
       end
     end
 
+    context 'where a file with that name exists, but it is not a directory' do
+      let(:tmp_piece_path) do
+        Tempfile.new('just-a-file-not-a-dir').path
+      end
+      let(:given_piece_name) do
+        File.basename tmp_piece_path
+      end
+      let(:expected_error_message) do
+        %Q{Found file "#{given_piece_name}" at "#{tmp_piece_path}", but was expecting a directory}
+      end
+
+      before do
+        tmp_piece_path
+      end
+
+      it 'returns an ArgumentError' do
+        expect { finder.find_by_name(given_piece_name) }
+          .to raise_error(ArgumentError, expected_error_message)
+      end
+    end
+
     context 'where the directory exists' do
       let(:tmp_piece_path) do
         Dir.mktmpdir

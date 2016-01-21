@@ -7,7 +7,8 @@ module Everything
       def find_by_name(piece_name)
         piece_path = File.join(Everything.path, piece_name)
 
-        raise_no_piece_error(piece_name) unless Dir.exist?(piece_path)
+        raise_no_piece_error(piece_name) unless File.exist?(piece_path)
+        raise_not_directory_error(piece_name, piece_path) unless Dir.exist?(piece_path)
 
         Piece.new(piece_path)
       end
