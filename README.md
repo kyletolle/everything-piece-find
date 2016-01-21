@@ -7,9 +7,9 @@
 You'll need [everything-core](https://github.com/kyletolle/everything-core)
 before you can use this.
 
-This adds a `#find_by_name` to `Everything::Piece`. This allows you to find a
-piece within your `everything` repo by name, instead of by the full path. This
-only works for pieces at the root of your everything repo.
+This adds finder methods to `Everything::Piece`. This allows you to find pieces
+within your `everything` repo by name, instead of by the full path. Check the
+Usage section below for details.
 
 ## Installation
 
@@ -32,10 +32,27 @@ Or install it yourself as:
 ```
 require 'everything'
 require 'everything-piece-find'
+```
 
+Now you have access to `Everything::Piece.find_by_name` and
+`Everything::Piece.find_by_name_recursive`. Once you've found the piece, you can
+use it like normal.
+
+### #find_by_name
+
+```
 piece = Everything::Piece.find_by_name('name-of-your-piece')
+piece.full_path
+# => /your/everything/repo/name-of-your-piece
+```
 
-# Now you can use the piece as you normally would.
+### #find_by_name_recursive
+
+```
+piece_in_nested_sub_folder =
+  Everything::Piece.find_by_name_recursive('another-piece-of-yours')
+piece_in_nested_sub_folder.full_path
+# => /your/everything/repo/and/some/sub/folders/another-piece-of-yours
 ```
 
 ## Development
