@@ -174,8 +174,11 @@ describe Everything::Piece::Find do
       let(:actual_piece) do
         finder.find_by_name_recursive(given_piece_name)
       end
+      let(:first_piece_path_ordered_by_name) do
+        [first_tmp_piece_path, second_tmp_piece_path].sort.first
+      end
       let(:expected_piece_path) do
-        first_tmp_piece_path
+        first_piece_path_ordered_by_name
       end
 
       it 'returns a piece' do
