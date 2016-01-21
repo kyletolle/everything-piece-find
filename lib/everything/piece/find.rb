@@ -28,20 +28,20 @@ module Everything
 
       def raise_no_piece_error(piece_name)
         error_message =
-          %Q{No piece "#{piece_name}" found in "#{Everything.path}"}
+          %Q{Could not find directory for piece "#{piece_name}" in #{Everything.path}}
 
         raise ArgumentError, error_message
       end
 
       def raise_no_piece_recursive_error(piece_name)
         error_message =
-          %Q{No piece "#{piece_name}" found in "#{Everything.path}" or subdirectories}
+          %Q{Could not find directory for piece "#{piece_name}" in #{Everything.path} or subdirectories}
         raise ArgumentError, error_message
       end
 
       def raise_not_directory_error(piece_name, piece_path)
         error_message =
-          %Q{Found file "#{piece_name}" at "#{piece_path}", but was expecting a directory}
+          %Q{Found file at #{piece_path}, but was expecting a directory for piece "#{piece_name}"}
         raise ArgumentError, error_message
       end
     end

@@ -28,7 +28,7 @@ describe Everything::Piece::Find do
     context 'where the directory does not exist' do
       let(:given_piece_name) { 'wont-exist' }
       let(:expected_error_message) do
-        %Q{No piece "#{given_piece_name}" found in "#{Everything.path}"}
+        %Q{Could not find directory for piece "#{given_piece_name}" in #{Everything.path}}
       end
 
       it 'raises an ArgumentError' do
@@ -45,7 +45,7 @@ describe Everything::Piece::Find do
         File.basename tmp_piece_path
       end
       let(:expected_error_message) do
-        %Q{Found file "#{given_piece_name}" at "#{tmp_piece_path}", but was expecting a directory}
+        %Q{Found file at #{tmp_piece_path}, but was expecting a directory for piece "#{given_piece_name}"}
       end
 
       before do
@@ -93,7 +93,7 @@ describe Everything::Piece::Find do
     context 'where the directory does not exist' do
       let(:given_piece_name) { 'wont-exist' }
       let(:expected_error_message) do
-        %Q{No piece "#{given_piece_name}" found in "#{Everything.path}" or subdirectories}
+        %Q{Could not find directory for piece "#{given_piece_name}" in #{Everything.path} or subdirectories}
       end
 
       it 'raises an ArgumentError' do
@@ -113,7 +113,7 @@ describe Everything::Piece::Find do
         File.basename tmp_piece_path
       end
       let(:expected_error_message) do
-        %Q{Found file "#{given_piece_name}" at "#{tmp_piece_path}", but was expecting a directory}
+        %Q{Found file at #{tmp_piece_path}, but was expecting a directory for piece "#{given_piece_name}"}
       end
 
       before do
