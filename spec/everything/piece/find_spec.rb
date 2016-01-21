@@ -14,7 +14,7 @@ describe Everything::Piece::Find do
 
   shared_context 'with stubbed everything path' do
     let(:expected_everything_path) do
-      '/everything/repo'
+      Dir.tmpdir
     end
 
     before do
@@ -30,12 +30,6 @@ describe Everything::Piece::Find do
     end
 
     context 'where the directory does not exist' do
-      before do
-        allow(Dir)
-          .to receive(:exists?)
-          .and_return(false)
-      end
-
       let(:expected_error_message) do
         %Q{No piece "#{given_piece_name}" found in "#{Everything.path}"}
       end
@@ -47,17 +41,22 @@ describe Everything::Piece::Find do
     end
 
     context 'where the directory exists' do
-      before do
-        allow(Dir)
-          .to receive(:exists?)
-          .and_return(true)
+      let(:tmp_piece_path) do
+        Dir.mktmpdir
+      end
+      let(:given_piece_name) do
+        File.basename tmp_piece_path
+      end
+
+      after do
+        FileUtils.remove_entry tmp_piece_path
       end
 
       let(:actual_piece) do
         finder.find_by_name(given_piece_name)
       end
       let(:expected_piece_path) do
-        '/everything/repo/seconds-away-from-you'
+        tmp_piece_path
       end
 
       it 'returns a piece' do
