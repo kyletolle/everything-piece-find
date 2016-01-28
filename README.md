@@ -27,11 +27,18 @@ Or install it yourself as:
 
     $ gem install everything-piece-find
 
+Note: If you're using Bundler to automatically include your gems, you can do
+this in the gemfile:
+
+```ruby
+gem 'everything-piece-find', require: 'everything/piece/find'
+```
+
 ## Usage
 
-```
+```ruby
 require 'everything'
-require 'everything-piece-find'
+require 'everything/piece/find'
 ```
 
 Now you have access to `Everything::Piece.find_by_name` and
@@ -40,7 +47,7 @@ use it like normal.
 
 ### #find_by_name
 
-```
+```ruby
 piece = Everything::Piece.find_by_name('name-of-your-piece')
 piece.full_path
 # => /your/everything/repo/name-of-your-piece
@@ -48,7 +55,7 @@ piece.full_path
 
 ### #find_by_name_recursive
 
-```
+```ruby
 piece_in_nested_sub_folder =
   Everything::Piece.find_by_name_recursive('another-piece-of-yours')
 piece_in_nested_sub_folder.full_path
