@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.7.0
+
+- Update everything-core dependency version to 0.0.7
+
 ## 0.6.0
 
-- Update everything-core dependency version
+- Update everything-core dependency version to 0.0.6
 
 ## 0.5.0
 
