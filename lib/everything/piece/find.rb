@@ -7,6 +7,7 @@ module Everything
       def find_by_name(piece_name)
         piece_path = File.join(Everything.path, piece_name)
 
+        # TODO: Move no_piece & not_directory errors into Piece in the core?
         raise_no_piece_error(piece_name) unless File.exist?(piece_path)
         raise_not_directory_error(piece_name, piece_path) unless Dir.exist?(piece_path)
 
